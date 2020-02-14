@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Search
+{% endblock title %}
+
+{% block main %}
+<section class="blog-page section-ptb bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-8 col-lg-9 mb-sm-50">
+				<div class="card" style="background-color: #f3f5fc;">
+					<div class="alert alert-info">
+					<strong>Success!</strong> Tìm thấy 4 kết quả
+				</div>
+				</div>
+				{% for post in posts  %}
+				<div class="card mb-50" data-aos="fade-up">
+					{% if post.photo %}
+					<div class="card-header position-relative">
+						<a href="{% url "post_detail" post.slug %}"><img src="{{ post.photo.url }}" alt="{{ post.title }}"></a>
+					</div>
+					{% endif %}
+					<div class="card-body bg-white">
+						<h3><a href="{% url "post_detail" post.slug %}">{{ post.title }}</a></h3>
+						<h5 class="mb-25">
+							By {{ post.author.username }} <i class="ti-user"></i>,
+							{{ post.created|date:'d/m/Y' }} <i class="ti-alarm-clock"></i>,
+							3 views <i class="ti-eye"></i>
+						</h5>
+						<p class="mb-30">
+							{{ post.content|truncatewords:3 }}
+						</p>
+						<a href="{% url "post_detail" post.slug %}" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+				{% endfor %}
+
+				{% if posts.has_other_pages %}
+					{% include "blog/includes/pagination.html" with page=posts %}
+				{% endif %}
+			</div>
+
+			{% include "blog/includes/aside.html" %}
+		</div>
+	</div>
+</section>
+{% endblock main %}
+

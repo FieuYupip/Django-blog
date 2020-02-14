@@ -1,0 +1,8 @@
+{% load widget_tweaks %}
+
+<form class="input-group" action="{% url "post_list" %}" type="get">	
+	<input type="text" class="form-control" placeholder="Search.." name="q">
+	<div class="input-group-append">
+		<button type="submit" class="input-group-text"><i class="ti-search"></i></button>
+	</div>
+</form>

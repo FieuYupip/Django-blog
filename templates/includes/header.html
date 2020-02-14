@@ -1,0 +1,38 @@
+{% load static %}
+{% load blog_tag %}
+
+<header class="position-fixed bg-white w-100">
+  <nav id="active-sticky" class="navbar navbar-light navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="{% url "home" %}"><img src="{% static "img/logo.png" %}" alt="rnr"></a>
+      <button class="navbar-toggler navber-toggler-right" data-toggle="collapse" data-target="#navbarToggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item {% if section == 'home' %} active {% endif %}">
+            <a href="{% url "home" %}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item {% if section == 'about' %} active {% endif %}">
+            <a href="{% url "about" %}" class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" >Category</a>
+            {% category_header %}
+          </li>
+          <li class="nav-item {% if section == 'blog' %} active {% endif %}">
+            <a href="{% url "post_list" %}" class="nav-link">Blog</a>
+          </li>
+          <li class="nav-item {% if section == 'contact' %} active {% endif %}">
+            <a href="{% url "contact" %}" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+        <div class="pl-20">
+          <a class="btn btn-sm btn-primary rounded" href="#">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="header-space"></div>

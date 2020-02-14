@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+{{ post.title }}
+{% endblock title %}
+
+
+{% block main %}
+<section class="blog-page section-ptb bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-8 col-lg-9 mb-sm-50 aos-init aos-animate" data-aos="fade-up">
+          <div class="card">
+            {% if post.photo %}
+            <div class="card-header position-relative">
+              <img src="{{ post.photo.url }}" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+            <div class="card-body bg-white">
+              <h3>{{ post.title }}</h3>
+              <h5 class="mb-25 info">
+                By {{ post.author.username }} <i class="ti-user"></i>,
+                {{ post.created|date:'d/m/Y' }} <i class="ti-alarm-clock"></i>,
+                {{ post.views }} views <i class="ti-eye"></i>
+              </h5>
+              <p class="mb-30 post">
+              	{{ post.content }}
+              </p>
+            </div>
+          </div>
+      </div>
+
+			{% include "blog/includes/aside.html" %}
+		</div>
+	</div>
+</section>
+{% endblock main %}
+

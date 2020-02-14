@@ -1,0 +1,32 @@
+{% load blog_tag %}
+
+<div class="col-12 col-md-4 col-lg-3">
+	<div class="sidebar" data-aos="fade-in">
+		<div class="widget search-box mb-30">
+			<form class="input-group" action="{% url "post_list" %}" type="get">	
+
+				<input type="text" class="form-control" placeholder="Search.." name="q">
+
+				<div class="input-group-append">
+					<button type="submit" class="input-group-text"><i class="ti-search"></i></button>
+				</div>
+			</form>
+		</div>
+
+		<div class="widget recent-post bg-white mb-30">
+			<div class="widget-title mb-15">
+				<h4 class="mb-10">Recent Posts</h4>
+				<hr class="line bw-2">
+			</div>
+			{% recent_posts %}
+		</div>
+
+		<div class="widget categories bg-white mb-30">
+			<div class="widget-title mb-15">
+				<h4 class="mb-10">Categories</h4>
+				<hr class="line bw-2">
+			</div>
+			{% category_aside %}
+		</div>
+	</div>
+</div>

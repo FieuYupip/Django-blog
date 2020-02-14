@@ -1,0 +1,5 @@
+<ul class="list-unstyled">
+	{% for category in categories %}
+		<li><a href="#">{{ category.name }} - <span>{{ category.posts.count }}</span></a></li>
+	{% endfor %}
+</ul>

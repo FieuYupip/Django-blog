@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Blog
+{% endblock title %}
+
+{% block main %}
+<section class="blog-page section-ptb bg-light">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-8 col-lg-9 mb-sm-50">
+				{% for post in posts  %}
+				<div class="card mb-50" data-aos="fade-up">
+					{% if post.photo %}
+					<div class="card-header position-relative">
+						<a href="{{ post.get_absolute_url }}"><img src="{{ post.photo.url }}" alt="{{ post.title }}"></a>
+					</div>
+					{% endif %}
+					<div class="card-body bg-white">
+						<h3>
+							<a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+							<a href="{% url 'post_edit' post.id %}"><i class="ti-pencil"></i></a>
+							<i class="ti-trash"></i>
+						</h3>
+						<h5 class="mb-25 info">
+							By {{ post.author.username }} <i class="ti-user"></i>,
+							{{ post.created|date:'d/m/Y' }} <i class="ti-alarm-clock"></i>,
+							{{ post.views }} views <i class="ti-eye"></i>
+						</h5>
+						<p class="mb-30 post">
+							{{ post.content|truncatewords:3 }}
+						</p>
+						<a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More</a>
+					</div>
+				</div>
+				{% empty %}
+				<p>Không có bài viết nào</p>
+				{% endfor %}
+
+				{% if posts.has_other_pages %}
+					{% include "blog/includes/pagination.html" with page=posts %}
+				{% endif %}
+			</div>
+
+			{% include "blog/includes/aside.html" %}
+
+		</div>
+	</div>
+</section>
+{% endblock main %}
+

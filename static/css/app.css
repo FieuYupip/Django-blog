@@ -1,0 +1,25 @@
+.ti-trash {
+	color: #e64141;
+}
+
+.ti-pencil {
+	color: #00abff;
+}
+
+.info {
+	font-weight: 300;
+	font-size: 15px;
+    color: #66676a;
+}
+
+p.post {
+	font-weight: 500;
+}
+
+#post-form .form-control {
+	border: 2px solid #ced4da;
+}
+
+#post-form input[type="file"] {
+	margin-bottom: 15px;
+}
